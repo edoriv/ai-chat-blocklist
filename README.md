@@ -1,4 +1,4 @@
-# AI Chat Blocklist
+## AI Chat Blocklist
 Community-maintained domains for AI chat / roleplay (incl. NSFW). Source of truth: `lists/domains.txt`.
 
 ## Use
