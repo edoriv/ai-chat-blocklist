@@ -1,0 +1,4 @@
+- One root domain per line in `lists/domains.txt` (no protocol, no path).
+- Prefer roots (`example.ai`) over subdomains unless necessary.
+- Add a brief reason in PR description (e.g., "NSFW AI chat").
+- CI will validate, dedupe subdomains, and regenerate formats.

@@ -1,0 +1,26 @@
+name: validate-and-build
+on:
+  pull_request:
+    paths: [ "lists/**", "scripts/**" ]
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run build
+        run: |
+          python3 scripts/build.py
+      - name: Fail on empty or too-short list
+        run: |
+          test -s lists/adguard.txt
+          test $(wc -l < lists/adguard.txt) -ge 5
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-lists
+          path: lists/*.txt
